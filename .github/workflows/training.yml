@@ -22,5 +22,5 @@ jobs:
       - name: Test Stuff
         shell: pwsh
         run: |
-          ./src/testStuff.ps1 -issueMarkdownContent "sdfsdfsdfsd"
+          ./src/testStuff.ps1 -issueMarkdownContent '${{ github.event.issue.body }}'
 
