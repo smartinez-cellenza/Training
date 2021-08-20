@@ -18,3 +18,8 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+
+      - name: Test Stuff
+        shell: pwsh
+        run: ./src/testStuff.ps1 -issueMarkdownContent ${{ github.event.issue.body }}
+
