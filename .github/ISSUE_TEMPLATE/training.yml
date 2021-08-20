@@ -1,29 +1,27 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: [bug, triage]
-assignees:
-  - octocat
+name: Training session
+description: Create a training session
+title: "[Training]: "
+labels: [training]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Create a new training session
   - type: input
-    id: contact
+    id: trainer
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: Session trainer
+      description: Trainer for this session
+      placeholder: ex. sylvain.martinez@cellenza.com
     validations:
-      required: false
+      required: true
   - type: textarea
-    id: what-happened
+    id: trainees
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      label: List of trainees
+      description: List of trainees
+      placeholder: List of trainees
+      value: "List of trainees"
     validations:
       required: true
   - type: dropdown
