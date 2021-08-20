@@ -21,5 +21,6 @@ jobs:
 
       - name: Test Stuff
         shell: pwsh
-        run: ./src/testStuff.ps1 -issueMarkdownContent "sdfsdfsdfsd"
+        run: |
+          ./src/testStuff.ps1 -issueMarkdownContent "sdfsdfsdfsd"
 
