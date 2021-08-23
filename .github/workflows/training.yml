@@ -5,7 +5,7 @@ on:
     types: [opened, edited]
 
 jobs:
-  summary:
+  initialize_training:
     runs-on: ubuntu-latest
     steps:
       # - name: View issue information
@@ -27,14 +27,7 @@ jobs:
       - name: Get Training summary
         id: get_training_summary
         shell: pwsh
-        run: ./src/GetSummary.ps1 -issueMarkdownContent '${{ github.event.issue.body }}' -issueName ${{ github.event.issue.title }}
-
-      - name: Comment issue with summary
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Thanks for creating this training. For now everything is fine. :heart:
+        run: ./src/GetSummary.ps1 -issueMarkdownContent '${{ github.event.issue.body }}' -issueName ${{ github.event.issue.title }} -issueUrl ${{ github.event.issue.html_url }}
 
       - name: Create training branch
         env:
@@ -53,8 +46,6 @@ jobs:
         shell: pwsh
         run: |
           Copy-Item -Path ${{ github.event.issue.title }}.json -Destination trainingBranch/trainings
-          # cd trainings/${{ github.event.issue.title }}
-          # ${{ steps.get_training_summary.outputs.trainingSummary }} | Out-File "${{ github.event.issue.title }}.json"
 
       - name: Commit new training
         uses: EndBug/add-and-commit@v7
@@ -65,10 +56,25 @@ jobs:
           branch: 'trainings/${{ github.event.issue.title }}'
 
       - name: Create Pull Request
+        id: create_pull_request
         uses: repo-sync/pull-request@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         with:
           source_branch: 'trainings/${{ github.event.issue.title }}'
           destination_branch: 'main'
           pr_title: 'Add new training ${{ github.event.issue.title }}'
+          pr_body: "This Pull Request has been automatically created for your next training. Related to Issue ${{ github.event.issue.html_url }}"
+          pr_assigne: '${{ steps.get_training_summary.outputs.trainerEmail }}'
+
+      - name: Comment issue with summary
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thanks for creating this training, you're really my favorite user you know :heart:
+            Trainer has been assigned a Pull Request and should do its work now.
+            The PR is this one : ${{ steps.create_pull_request.outputs.pr_url }}
+
+            Really, you're the best, a real asset for Cellenza

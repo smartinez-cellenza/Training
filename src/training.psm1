@@ -1,7 +1,9 @@
 function Get-TrainingSummary {
     param(
         [Parameter(Mandatory=$true)]
-        [string]$issueMarkdownContent
+        [string]$issueMarkdownContent,
+        [Parameter(Mandatory=$true)]
+        [string]$issueUrl
     )
 
     $issueContent = ConvertFrom-Markdown -InputObject $issueMarkdownContent
@@ -34,6 +36,7 @@ function Get-TrainingSummary {
         trainer = $trainerEmail;
         trainees = $traineeList;
         trainingType = $trainingType;
+        issueUrl = $issueUrl
     }
 }
 
