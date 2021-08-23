@@ -1,6 +1,6 @@
 name: Training session
 description: Create a training session
-title: "[Training]: "
+title: "training"
 labels: [training]
 body:
   - type: markdown
