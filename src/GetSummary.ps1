@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory=$true)]
     [string]$issueMarkdownContent,
-    [Paramter(Mandatory=$true)]
+    [Parameter(Mandatory=$true)]
     [string]$issueName
 )
 
