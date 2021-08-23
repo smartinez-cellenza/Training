@@ -43,7 +43,21 @@ jobs:
         with:
           branch: 'trainings/${{ github.event.issue.title }}'
 
+      - name: Clone training branch
+        uses: EndBug/add-and-commit@v7
+        with:
+          ref: 'trainings/${{ github.event.issue.title }}'
+          path: 'trainings/${{ github.event.issue.title }}'
 
+      - name: Add new training session file
+        shell: pwsh
+        run: |
+          cd trainings/${{ github.event.issue.title }}
+          "${{ steps.get_training_summary.outputs.trainingSummary }}" | Out-File "${{ github.event.issue.title }}.json"
 
-
-
+      - name: Commit and PR new training
+        uses: EndBug/add-and-commit@v7
+        with:
+          cwd: 'trainings/${{ github.event.issue.title }}'
+          add: 'trainings/${{ github.event.issue.title }}.json'
+          message: 'Add new training ${{ github.event.issue.title }}'
