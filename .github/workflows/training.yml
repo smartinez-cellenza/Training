@@ -29,7 +29,7 @@ jobs:
 
       - name : Display summary
         shell: pwsh
-        run: Write-Host ${{ steps.get_training_summary.outputs.trainingSummary }}
+        run: Write-Host "${{ steps.get_training_summary.outputs.trainingSummary }}"
 
 
 
