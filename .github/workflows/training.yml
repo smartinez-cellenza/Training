@@ -23,6 +23,6 @@ jobs:
         shell: pwsh
         run: |
           write-host "hello"
-          # ./src/testStuff.ps1
+          test.ps1
         
 
