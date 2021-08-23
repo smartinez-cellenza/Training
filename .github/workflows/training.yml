@@ -27,7 +27,7 @@ jobs:
       - name: Get Training summary
         id: get_training_summary
         shell: pwsh
-        run: ./src/GetSummary.ps1 -issueMarkdownContent '${{ github.event.issue.body }}'
+        run: ./src/GetSummary.ps1 -issueMarkdownContent '${{ github.event.issue.body }}' -issueName ${{ github.event.issue.title }}
 
       - name: Comment issue with summary
         uses: peter-evans/create-or-update-comment@v1
