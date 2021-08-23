@@ -21,6 +21,8 @@ jobs:
 
       - name: Test Stuff
         shell: pwsh
-        run: ./src/testStuff.ps1
+        run: |
+          write-host "hello"
+          # ./src/testStuff.ps1
         
 
