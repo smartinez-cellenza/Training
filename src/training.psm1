@@ -11,7 +11,6 @@ function Get-TrainingSummary {
     $trainerEmailStartIndex = $trainerEmailContent.Start
     $trainerEmailLength = $trainerEmailContent.Length
     $trainerEmail = $trainerEmailContent.Text.Substring($trainerEmailStartIndex,$trainerEmailLength)
-    Write-Host "Trainer is $trainerEmail"
 
     # Trainees
     $traineesEnumerator = $issueContent.Tokens[3].Inline.GetEnumerator()
@@ -30,7 +29,6 @@ function Get-TrainingSummary {
     $trainingTypeStartIndex = $trainingTypeContent.Start
     $trainingTypeLength = $trainingTypeContent.Length
     $trainingType = $trainingTypeContent.Text.Substring($trainingTypeStartIndex,$trainingTypeLength)
-    Write-Host "Training type is $trainingType"
 
     @{
         trainer = $trainerEmail;
