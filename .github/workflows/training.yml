@@ -5,7 +5,7 @@ on:
     types: [opened, edited]
 
 jobs:
-  job1:
+  summary:
     runs-on: ubuntu-latest
     steps:
       # - name: View issue information
@@ -31,7 +31,7 @@ jobs:
         shell: pwsh
         run: Write-Host $env:training_summary
         env:
-          training_summary: ${{ get_training_summary.outputs.trainingSummary }}
+          training_summary: ${{ summary.get_training_summary.outputs.trainingSummary }}
 
 
 
