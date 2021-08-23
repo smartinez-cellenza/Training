@@ -52,6 +52,11 @@ jobs:
       - name: Add new training session file
         shell: pwsh
         run: |
+          write-host "${{ steps.get_training_summary.outputs.trainingSummary }}"
+
+      - name: Add new training session file
+        shell: pwsh
+        run: |
           cd trainings/${{ github.event.issue.title }}
           ${{ steps.get_training_summary.outputs.trainingSummary }} | Out-File "${{ github.event.issue.title }}.json"
 
