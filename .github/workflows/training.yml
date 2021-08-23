@@ -30,8 +30,7 @@ jobs:
       - name : Display summary
         shell: pwsh
         run: Write-Host $env:training_summary
-        env:
-          training_summary: ${{ summary.get_training_summary.outputs.trainingSummary }}
+
 
 
 
