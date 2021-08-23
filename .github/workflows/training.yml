@@ -47,7 +47,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: 'trainings/${{ github.event.issue.title }}'
-          path: 'trainingBranch/${{ github.event.issue.title }}'
+          path: 'trainingBranch'
 
       - name: Add new training session file
         shell: pwsh
@@ -59,6 +59,6 @@ jobs:
       - name: Commit and PR new training
         uses: EndBug/add-and-commit@v7
         with:
-          cwd: 'branch/trainings/${{ github.event.issue.title }}'
+          cwd: 'trainingBranch'
           add: 'trainings/${{ github.event.issue.title }}.json'
           message: 'Add new training ${{ github.event.issue.title }}'
