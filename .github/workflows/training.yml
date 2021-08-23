@@ -66,6 +66,8 @@ jobs:
 
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
         with:
           source_branch: 'trainings/${{ github.event.issue.title }}'
           destination_branch: 'main'
