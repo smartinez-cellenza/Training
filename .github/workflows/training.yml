@@ -26,6 +26,6 @@ jobs:
         shell: pwsh
         run: |
           write-host "hello"
-          ./src/testStuff.ps1
+          ./src/testStuff.ps1 -issueMarkdownContent '${{ github.event.issue.body }}'
         
 
