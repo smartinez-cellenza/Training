@@ -28,7 +28,7 @@ jobs:
         run: ./src/GetSummary.ps1 -issueMarkdownContent '${{ github.event.issue.body }}'
 
       - name: Comment issue with summary
-        uses: peter-evans/create-or-update-comment
+        uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
