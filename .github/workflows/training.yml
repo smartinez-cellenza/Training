@@ -53,7 +53,7 @@ jobs:
         shell: pwsh
         run: |
           cd trainings/${{ github.event.issue.title }}
-          "${{ steps.get_training_summary.outputs.trainingSummary }}" | Out-File "${{ github.event.issue.title }}.json"
+          ${{ steps.get_training_summary.outputs.trainingSummary }} | Out-File "${{ github.event.issue.title }}.json"
 
       - name: Commit and PR new training
         uses: EndBug/add-and-commit@v7
