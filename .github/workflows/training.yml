@@ -8,24 +8,30 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: View issue information
-        run: |
-          echo "Issue title: ${{ github.event.issue.title }}"
-          echo "Issue body: ${{ github.event.issue.body }}"
+      # - name: View issue information
+      #   run: |
+      #     echo "Issue title: ${{ github.event.issue.title }}"
+      #     echo "Issue body: ${{ github.event.issue.body }}"
 
 # You also can print the whole github context to the logs to view more details.
-      - name: View the github context
-        run: echo "$GITHUB_CONTEXT"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+      # - name: View the github context
+      #   run: echo "$GITHUB_CONTEXT"
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
 
       - uses: actions/checkout@v2
         name: Checkout
-          
-      - name: Test Stuff
+
+      - name: Get Training summary
+        id: get_training_summary
         shell: pwsh
-        run: |
-          write-host "hello"
-          ./src/testStuff.ps1 -issueMarkdownContent '${{ github.event.issue.body }}'
-        
+        run: ./src/GetSummary.ps1 -issueMarkdownContent '${{ github.event.issue.body }}'
+
+      - name : Display summary
+        shell: pwsh
+        run: Write-Host $env:training_summary
+        env:
+          training_summary: ${{ get_training_summary.outputs.trainingSummary }}
+
+
 
