@@ -66,7 +66,7 @@ jobs:
           destination_branch: 'main'
           pr_title: 'Add new training ${{ github.event.issue.title }}'
           pr_body: "This Pull Request has been automatically created for your next training. Related to Issue ${{ github.event.issue.html_url }}"
-          pr_assigne: '${{ steps.get_training_summary.outputs.trainerEmail }}'
+          pr_assignee: '${{ steps.get_training_summary.outputs.trainerEmail }}'
 
       - name: Comment issue with summary
         uses: peter-evans/create-or-update-comment@v1
