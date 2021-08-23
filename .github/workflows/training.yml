@@ -44,7 +44,7 @@ jobs:
           branch: 'trainings/${{ github.event.issue.title }}'
 
       - name: Clone training branch
-        uses: EndBug/add-and-commit@v7
+        uses: actions/checkout@v2
         with:
           ref: 'trainings/${{ github.event.issue.title }}'
           path: 'trainings/${{ github.event.issue.title }}'
