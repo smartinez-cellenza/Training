@@ -27,9 +27,13 @@ jobs:
         shell: pwsh
         run: ./src/GetSummary.ps1 -issueMarkdownContent '${{ github.event.issue.body }}'
 
-      - name : Display summary
-        shell: pwsh
-        run: Write-Host "${{ steps.get_training_summary.outputs.trainingSummary }}"
+      - name: Comment issue with summary
+        uses: peter-evans/create-or-update-comment
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thanks for creating this training. For now everything is file. :heart:
+
 
 
 
