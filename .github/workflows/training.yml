@@ -52,7 +52,7 @@ jobs:
       - name: Add new training session file
         shell: pwsh
         run: |
-          Copy-Item -Path ${{ github.event.issue.title }}.json -Destination trainingBranch/trainings/${{ github.event.issue.title }}/trainings
+          Copy-Item -Path ${{ github.event.issue.title }}.json -Destination trainingBranch/trainings
           # cd trainings/${{ github.event.issue.title }}
           # ${{ steps.get_training_summary.outputs.trainingSummary }} | Out-File "${{ github.event.issue.title }}.json"
 
