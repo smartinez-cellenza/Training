@@ -10,9 +10,9 @@ param(
 Import-Module .\src\training.psm1
 
 $trainingSummary = Get-TrainingSummary -issueMarkdownContent $issueMarkdownContent -issueUrl $issueUrl
-$configuration = Get-Content ./src/configuration.json | ConvertFrom-Json
-Write-Host "Trainer is $($trainerSummary.trainer)"
-$trainerInfo = $configuration.trainers | Where-Object {$_.email -eq $traininSummary.trainer}
+$configuration = Get-Content .\src\configuration.json | ConvertFrom-Json
+Write-Host "Trainer is $($trainingSummary.trainer)"
+$trainerInfo = $configuration.trainers | Where-Object {$_.email -eq $trainingSummary.trainer}
 if($trainerInfo) {
     Write-Host "::set-output name=trainerUsername::$($trainerInfo.githubUsername)"
 }
