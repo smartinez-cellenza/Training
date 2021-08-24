@@ -1,0 +1,9 @@
+{
+  "trainingType": "Terraform introduction",
+  "trainer": "sylvain.martinez@cellenza.com",
+  "trainees": [
+    "toto@truc.com",
+    "machin@bim.fr"
+  ],
+  "issueUrl": "https://github.com/smartinez-cellenza/Training/issues/7"
+}
