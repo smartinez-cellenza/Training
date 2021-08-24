@@ -74,6 +74,5 @@ jobs:
           body: |
             Thanks for creating this training, you're really my favorite user you know :heart:
             Trainer has been assigned a Pull Request and should do its work now.
-            The PR is this one : ${{ steps.create_pull_request.outputs.pr_url }}
 
             Really, you're the best, a real asset for Cellenza
