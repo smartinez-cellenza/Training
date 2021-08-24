@@ -1,4 +1,4 @@
-name: training
+name: initialize_training
 
 on:
   issues:
@@ -13,7 +13,6 @@ jobs:
       #     echo "Issue title: ${{ github.event.issue.title }}"
       #     echo "Issue body: ${{ github.event.issue.body }}"
 
-# You also can print the whole github context to the logs to view more details.
       # - name: View the github context
       #   run: echo "$GITHUB_CONTEXT"
       #   env:
@@ -66,7 +65,7 @@ jobs:
           destination_branch: 'main'
           pr_title: 'Add new training ${{ github.event.issue.title }}'
           pr_body: "This Pull Request has been automatically created for your next training. Related to Issue ${{ github.event.issue.html_url }}"
-          pr_assignee: '${{ steps.get_training_summary.outputs.trainerEmail }}'
+          pr_assignee: '${{ steps.get_training_summary.outputs.trainerUsername }}'
 
       - name: Comment issue with summary
         uses: peter-evans/create-or-update-comment@v1
