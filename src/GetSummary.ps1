@@ -1,3 +1,5 @@
+[System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost', '')]
+
 param(
     [Parameter(Mandatory=$true)]
     [string]$issueMarkdownContent,
