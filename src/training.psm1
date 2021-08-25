@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Get training summary
+
+.DESCRIPTION
+Get training summary (trainer, trainees, source issue url, training type) as PSCustomObject from issue's markdown
+
+.PARAMETER issueMarkdownContent
+Issue body markdown
+
+.PARAMETER issueUrl
+Issue Url
+
+.EXAMPLE
+Get-TrainingSummary -issueMarkdownContent $markdownContent -issueUrl "https://myissueurl.com"
+
+.NOTES
+General notes
+#>
 function Get-TrainingSummary {
     param(
         [Parameter(Mandatory=$true)]
